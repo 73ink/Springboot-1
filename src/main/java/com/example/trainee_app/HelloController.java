@@ -17,4 +17,5 @@ public class HelloController {
     public Trainee getProfile() {
         return new Trainee();
     }
+    // Task 9: Accidentally Breaking Your App (The "Folder Location" Lesson)
 }
