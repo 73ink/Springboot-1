@@ -9,4 +9,8 @@ public class HelloController {
     public String welcomeMessage() {
         return "Welcome to Code Creators Spring Boot Training!!";
     }
+    @GetMapping("/help")
+    public String helpMessage() {
+        return "If you are stuck, please post your error screenshot on Slack!";
+    }
 }
