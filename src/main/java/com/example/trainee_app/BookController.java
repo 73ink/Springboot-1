@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 public class BookController {
-
+// Taking Input One by One using @RequestParam
     private static List<Book> books = new ArrayList<>();
 
     @GetMapping("/add-book")
@@ -21,13 +21,13 @@ public class BookController {
 
         return "Book added successfully!";
     }
-
+// Viewing the Whole Bookshelf (Show All API)
     @GetMapping("/all-books")
     public List<Book> getAllBooks() {
 
         return books;
     }
-
+// Searching for a Book by its Unique ID
     @GetMapping("/find-by-id")
     public Book findById(@RequestParam int id) {
         for (Book book : books) {
@@ -38,5 +38,15 @@ public class BookController {
         }
         return null;
     }
+//    Finding Books by Name (The Search Filter)
+@GetMapping("/find-by-Name")
+public Book findByName(@RequestParam String name) {
+    for (Book book : books) {
 
+        if (book.getName().equalsIgnoreCase(name)) {
+            return book;
+        }
+    }
+    return null;
+}
 }
