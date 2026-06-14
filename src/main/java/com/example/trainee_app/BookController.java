@@ -22,4 +22,23 @@ public class BookController {
         return "Book added successfully!";
     }
 
+    @GetMapping("/all-books")
+    public List<Book> getAllBooks() {
+
+        return books;
+    }
+
+    @GetMapping("/find-by-id")
+    public Book findById(@RequestParam int id) {
+
+        for (Book book : books) {
+
+            if (book.getId() == id) {
+                return book;
+            }
+        }
+
+        return null;
+    }
+
 }
