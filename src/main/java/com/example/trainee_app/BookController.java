@@ -49,4 +49,20 @@ public Book findByName(@RequestParam String name) {
     }
     return null;
 }
+
+    //Handling the "Not Found" Scenario Cleanly
+    @GetMapping("/search-msg")
+    public String searchMessage(@RequestParam int id) {
+
+        for (Book book : books) {
+
+            if (book.getId() == id) {
+                return "Found: " + book.getName();
+            }
+        }
+
+        return "Sorry, that book ID is not available.";
+    }
+
+
 }
