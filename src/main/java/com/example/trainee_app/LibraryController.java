@@ -59,4 +59,42 @@ public class LibraryController {
         }
     }
 
+    @GetMapping("/author-report")
+    public String authorReport(@RequestParam String authorName) {
+
+        Author foundAuthor = null;
+
+        for (Author author : authorList) {
+
+            if (author.getName().equalsIgnoreCase(authorName)) {
+                foundAuthor = author;
+                break;
+            }
+        }
+
+        if (foundAuthor == null) {
+            return "Error: Author not found.";
+        }
+
+        StringBuilder booksWritten = new StringBuilder();
+
+        for (Book book : bookList) {
+
+            if (book.getAuthorId() == foundAuthor.getId()) {
+                booksWritten.append(book.getName()).append(", ");
+            }
+        }
+
+        String finalBooks;
+
+        if (booksWritten.length() == 0) {
+            finalBooks = "None";
+        } else {
+            finalBooks = booksWritten.substring(0, booksWritten.length() - 2);
+        }
+
+        return "Author Name: " + foundAuthor.getName()
+                + " | Biography: " + foundAuthor.getBiography()
+                + " | Books Written: " + finalBooks;
+    }
 }
