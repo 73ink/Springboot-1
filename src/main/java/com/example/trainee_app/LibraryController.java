@@ -31,4 +31,32 @@ public class LibraryController {
         return authorList;
     }
 
+    @GetMapping("/add-relational-book")
+    public String addRelationalBook(@RequestParam int id,
+                                    @RequestParam String name,
+                                    @RequestParam int authorId) {
+
+        boolean authorExists = false;
+
+        for (Author author : authorList) {
+
+            if (author.getId() == authorId) {
+                authorExists = true;
+                break;
+            }
+        }
+
+        if (authorExists) {
+
+            Book newBook = new Book(id, name, authorId);
+
+            bookList.add(newBook);
+
+            return "Book added successfully with a valid author!";
+        } else {
+
+            return "Error: Author does not exist in the author registry.";
+        }
+    }
+
 }
