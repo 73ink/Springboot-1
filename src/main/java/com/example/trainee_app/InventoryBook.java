@@ -9,4 +9,12 @@ public class InventoryBook {
     private double price;
     private int stockCount;
 
+    // This constructor creates a new InventoryBook object with all required data.
+    public InventoryBook(int bookId, String title, double price, int stockCount) {
+        this.bookId = bookId;
+        this.title = title;
+        this.price = price;
+        this.stockCount = stockCount;
+    }
+
 }
