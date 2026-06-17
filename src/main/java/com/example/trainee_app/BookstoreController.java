@@ -57,4 +57,26 @@ public class BookstoreController {
 
         return "This bookstore does not carry a book with ID: " + bookId;
     }
+    // Task 25: Bulk Low-Stock Reorder Report
+    // This endpoint checks which books have stock less than or equal to the given threshold.
+    @GetMapping("/low-stock-report")
+    public String lowStockReport(@RequestParam int threshold) {
+
+        String report = "";
+
+        for (InventoryBook book : inventoryBooks) {
+
+            if (book.getStockCount() <= threshold) {
+                report = report + "Title: " + book.getTitle()
+                        + " | Stock: " + book.getStockCount()
+                        + "\n";
+            }
+        }
+
+        if (report.equals("")) {
+            return "No books currently need reordering.";
+        }
+
+        return "Low Stock Reorder Report:\n" + report;
+    }
 }
