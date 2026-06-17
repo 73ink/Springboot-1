@@ -16,5 +16,36 @@ public class InventoryBook {
         this.price = price;
         this.stockCount = stockCount;
     }
+    // added the getter and setter methods for all variables
+    public int getBookId() {
+        return bookId;
+    }
 
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getStockCount() {
+        return stockCount;
+    }
+
+    public void setStockCount(int stockCount) {
+        this.stockCount = stockCount;
+    }
 }
