@@ -34,4 +34,27 @@ public class BookstoreController {
 
         return inventoryBooks;
     }
+
+    // Task 24: Interactive Stock Status Search
+    // This endpoint searches for a book by ID and checks if it is available or sold out.
+    @GetMapping("/check-stock")
+    public String checkStock(@RequestParam int bookId) {
+
+        for (InventoryBook book : inventoryBooks) {
+
+            if (book.getBookId() == bookId) {
+
+                if (book.getStockCount() > 0) {
+                    return "Available: " + book.getTitle()
+                            + " | Price: " + book.getPrice()
+                            + " OMR | Stock: " + book.getStockCount();
+                } else {
+                    return "Sold out: " + book.getTitle()
+                            + " is currently not available in stock.";
+                }
+            }
+        }
+
+        return "This bookstore does not carry a book with ID: " + bookId;
+    }
 }
